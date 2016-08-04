@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+
+    @Html.Action("GetAuthenticatedUser", "ClassroomResource")
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
