@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClassroomResource.Models
+namespace ClassroomResource.Data.Models
 {
-    public class Instructor
+    public class User
     {
         public string Username { get; set; }
         public string Password { get; set; }

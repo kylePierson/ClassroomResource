@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ClassroomResource.ViewModels
+namespace ClassroomResource.Web.Web.ViewModels
 {
     public class LoginViewModel
     {

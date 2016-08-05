@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ClassroomResource.Models;
+using ClassroomResource.Data.Models;
 
-namespace ClassroomResource.Data_Access_Layer
+namespace ClassroomResource.Data.Data_Access_Layer
 {
-    public class InstructorSqlDAL : IInstructorDAL
+    public class UserSqlDAL : IUserDAL
     {
         public bool ChangePassword(string username, string newPassword)
         {
             throw new NotImplementedException();
         }
 
-        public bool CreateInstructor(Instructor newInstructor)
+        public bool CreateUser(User newUser)
         {
             throw new NotImplementedException();
         }
 
-        public Instructor GetUser(string username)
+        public User GetUser(string username)
         {
             throw new NotImplementedException();
         }
 
-        public Instructor GetUser(string username, string password)
+        public User GetUser(string username, string password)
         {
             throw new NotImplementedException();
         }

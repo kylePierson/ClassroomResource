@@ -1,11 +1,11 @@
-﻿using ClassroomResource.ViewModels;
+﻿using ClassroomResource.Web.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ClassroomResource.Controllers
+namespace ClassroomResource.Web.Controllers
 {
     public class QuizController : Controller
     {

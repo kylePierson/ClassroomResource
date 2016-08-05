@@ -1,21 +1,22 @@
-﻿using ClassroomResource.Data_Access_Layer;
-using ClassroomResource.Models;
+﻿using ClassroomResource.Data.Data_Access_Layer;
+using ClassroomResource.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClassroomResource.Data.Models;
 
-namespace ClassroomResource.Controllers
+namespace ClassroomResource.Web.Controllers
 {
     public class ClassroomResourceController: Controller
     {
         private const string UsernameKey = "ClassroomResource_UserName";
-        private readonly IInstructorDAL instructorDal;
+        private readonly IUserDAL userDal;
 
-        public ClassroomResourceController(IInstructorDAL instructorDal)
+        public ClassroomResourceController(IUserDAL userDal)
         {
-            this.instructorDal = instructorDal;
+            this.userDal = userDal;
         }
 
 
@@ -70,11 +71,11 @@ namespace ClassroomResource.Controllers
         [ChildActionOnly]
         public ActionResult GetAuthenticatedUser()
         {
-            Instructor model = null;
+            User model = null;
 
             if (IsAuthenticated)
             {
-                model = instructorDal.GetUser(CurrentUser);
+                model = userDal.GetUser(CurrentUser);
             }
 
             return View("_AuthenticationBar", model);

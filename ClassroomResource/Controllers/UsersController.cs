@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ClassroomResource.Data_Access_Layer;
-using ClassroomResource.ViewModels;
-using ClassroomResource.Models;
+using ClassroomResource.Web.ViewModels;
+using ClassroomResource.Data.Data_Access_Layer;
+using ClassroomResource.Web.Web.ViewModels;
+using ClassroomResource.Data.Models;
 
-namespace ClassroomResource.Controllers
+namespace ClassroomResource.Web.Controllers
 {
     public class UsersController : ClassroomResourceController
     {
-        private readonly IInstructorDAL instructorDal;
+        private readonly IUserDAL userDal;
 
-        public UsersController(IInstructorDAL instructorDal)
-            : base(instructorDal)
+        public UsersController(IUserDAL userDal)
+            : base(userDal)
         {
-            this.instructorDal = instructorDal;
+            this.userDal = userDal;
         }
 
         // GET: Users
@@ -43,7 +44,7 @@ namespace ClassroomResource.Controllers
                 return View("ChangePassword", model);
             }
 
-            instructorDal.ChangePassword(model.Username, model.NewPassword);
+            userDal.ChangePassword(model.Username, model.NewPassword);
 
             return RedirectToAction("Index", "Quiz", new { username = base.CurrentUser });
         }
@@ -74,7 +75,7 @@ namespace ClassroomResource.Controllers
 
             if (ModelState.IsValid)
             {
-                var currentUser = instructorDal.GetUser(model.Username);
+                var currentUser = userDal.GetUser(model.Username);
 
                 if (currentUser != null)
                 {
@@ -82,14 +83,14 @@ namespace ClassroomResource.Controllers
                     return View("NewUser", model);
                 }
 
-                var newUser = new Instructor
+                var newUser = new User
                 {
                     Username = model.Username,
                     Password = model.Password,
                 };
 
                 // Add the user to the database
-                instructorDal.CreateInstructor(newUser);
+                userDal.CreateUser(newUser);
 
                 // Log the user in and redirect to the dashboard
                 base.LogUserIn(model.Username);
@@ -106,7 +107,7 @@ namespace ClassroomResource.Controllers
         {
             if (base.IsAuthenticated)
             {
-                return RedirectToAction("Dashboard", "Messages", new { username = base.CurrentUser });
+                return RedirectToAction("Index", "Quiz", new { username = base.CurrentUser });
             }
 
             var model = new LoginViewModel();
@@ -118,7 +119,7 @@ namespace ClassroomResource.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = instructorDal.GetUser(model.Username, model.Password);
+                var user = userDal.GetUser(model.Username, model.Password);
 
                 // No user found with these credentials
                 if (user == null)

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClassroomResource.Models
+namespace ClassroomResource.Data.Data_Access_Layer
 {
-    public class Answer
+    public class QuestionSqlDAL: IQuestionDAL
     {
-        public int QuestionId { get; set; }
     }
 }

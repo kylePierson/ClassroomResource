@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassroomResource.Data_Access_Layer
+namespace ClassroomResource.Data.Data_Access_Layer
 {
-    interface IQuestionDAL
+    public interface ITrueFalseDAL
     {
     }
 }

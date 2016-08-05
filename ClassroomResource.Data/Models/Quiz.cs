@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ClassroomResource.Models
+namespace ClassroomResource.Data.Models
 {
     public class Quiz
     {
